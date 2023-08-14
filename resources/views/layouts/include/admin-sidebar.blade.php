@@ -9,7 +9,7 @@
                     Dashboard
                 </a>
 
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUser" aria-expanded="false" aria-controls="collapseLayouts">
+                {{-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUser" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                     Users
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -17,24 +17,24 @@
                 <div class="collapse" id="collapseUser" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ url('admin/user') }}">View User</a>
-                        {{-- <a class="nav-link" href="{{ url('admin/add-user') }}">Add User</a> --}}
+
                     </nav>
-                </div>
+                </div> --}}
 
 
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseClient" aria-expanded="false" aria-controls="collapseLayouts">
-                    <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                    Client
+                    <div class="sb-nav-link-icon"><i class="fa-solid fa-synagogue"></i></div>
+                    Product
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseClient" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ url('admin/client') }}">View Client</a>
-                        <a class="nav-link" href="{{ url('admin/add-client') }}">Add Client</a>
+                        <a class="nav-link" href="{{ url('admin/product') }}">View Product</a>
+                        <a class="nav-link" href="{{ url('admin/add-product') }}">Add Product</a>
                     </nav>
                 </div>
 
-                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProject" aria-expanded="false" aria-controls="collapseLayouts">
+                 {{-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProject" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fa fa-briefcase"></i></div>
                     Project
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -44,12 +44,9 @@
                         <a class="nav-link" href="{{ url('admin/project') }}">View Project</a>
                         <a class="nav-link" href="{{ url('admin/add-project') }}">Add Project</a>
                     </nav>
-                </div>
+                </div> --}}
 
-                <a class="nav-link" href="index.html">
-                    <div class="sb-nav-link-icon"><i class="fa fa-tasks"></i></div>
-                    Tasks
-                </a>
+
 
 
 

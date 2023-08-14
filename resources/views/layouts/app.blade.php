@@ -12,9 +12,12 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="{{ asset('assests/css/styles.css') }}" rel="stylesheet" />
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <div id="app">
@@ -76,5 +79,8 @@
             @yield('content')
         </main>
     </div>
+
+    <script src="{{ asset('assests/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assests/js/scripts.js') }}"></script>
 </body>
 </html>

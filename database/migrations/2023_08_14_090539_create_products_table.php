@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
             $table->string('code');
             $table->string('name');
             $table->text('description');
@@ -21,8 +20,6 @@ return new class extends Migration
             $table->integer('display_order_no');
             $table->decimal('price_created_by', 8, 2);
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
 
         });
     }

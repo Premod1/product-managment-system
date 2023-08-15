@@ -1,15 +1,22 @@
 @extends('layouts.master')
 
-@section('title', 'product dashboard')
+@section('title', 'Product dashboard')
 
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">View Product</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active"> View Product</li>
-    </ol>
-    <div class="row">
+
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <h4 class="">View Product <a href="{{ url('admin/add-product')}}" class="btn btn-primary btn-lg float-end">Add Product</a></h4>
+        </div>
+        <div class="card-body">
+            @if(session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
         <table class="table">
             <thead class="thead-dark">
               <tr>
@@ -24,80 +31,28 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-              </tr>
+                @foreach($products as $product)
+                <tr>
+                    <td>{{ $product->id }}</td>
+                    <td>{{ $product->code }}</td>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->description }}</td>
+                    <td>{{ $product->category_id }}</td>
+                    <td>{{ $product->display_order_no }}</td>
+                    <td>{{ $product->price_created_by }}</td>
+                    <td>
+                        <div>
+                            <a href="{{ route('product.edit', $product->id) }}" class="btn btn-info"> Edit</a>
+                            <a href="{{ route('product.delete', $product->id) }}" class="btn btn-danger"> Delete</a>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
 
             </tbody>
           </table>
-
-
-        {{-- <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Project Name</th>
-                    <th>Project Description</th>
-                    <th>Assign User</th>
-                    <th>Assign Client</th>
-                    <th>Deadline</th>
-                    <th>File</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-                        <td> </td>
-
-                        <td></td>
-                        <td></td>
-
-                        <td>
-                            <div>
-                                <a href="#" class="btn btn-primary"> Edit</a>
-                                <a href="#" class="btn btn-danger"> Delete</a>
-                            </div>
-
-                        </td>
-
-                    </tr>
-
-            </tbody>
-        </table> --}}
-        {{-- {{ $projects->links('pagination::bootstrap-4') }} --}}
+              {{ $products->links('pagination::bootstrap-4') }}
+        </div>
     </div>
 </div>
 @endsection

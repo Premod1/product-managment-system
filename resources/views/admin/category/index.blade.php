@@ -32,8 +32,8 @@
                 <td>{{ $item->name }}</td>
                 <td>
                     <div>
-                        <a href="#" class="btn btn-info"> Edit</a>
-                        <a href="#" class="btn btn-danger"> Delete</a>
+                        <a href="{{ route('category.edit', $item->id) }}" class="btn btn-info"> Edit</a>
+                        <a href="{{ route('category.delete', $item->id) }}" class="btn btn-danger"> Delete</a>
                     </div>
                 </td>
             </tr>

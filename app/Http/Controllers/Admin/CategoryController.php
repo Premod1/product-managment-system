@@ -29,4 +29,20 @@ class CategoryController extends Controller
 
         return redirect()->route('category')->with('status', 'Category added successfully.');
     }
+    public function edit($id)
+    {
+        $category = Category::findOrFail($id);
+        return view('admin.category.edit',compact('category'));
+    }
+    public function update(Request $request, $id)
+    {
+        Category::findOrFail($id)->update($request->all());
+        return redirect()->route('category')->with('status', 'Category added successfully.');
+
+    }
+    public function delete($id)
+    {
+        Category::findOrFail($id)->delete();
+        return redirect()->route('category')->with('status', 'Category Updated successfully.');
+    }
 }

@@ -12,7 +12,8 @@
             <h4 class="">Edit Product</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('product.store') }}" method="POST">
+            <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+
                 @csrf
                 <div class="form-floating">
                     <input class="form-control" name="product_code" id="code" value="{{ old('product_code', $product->code) }}" type="number" placeholder="Leave a comment here" />
@@ -40,10 +41,10 @@
                 <br />
 
                 <div class="form-floating">
-                    <select class="form-select" name="product_category" aria-label="Default select example">
+                    <select class="form-select" name="product_category" aria-label="Default select example"  >
                         <option selected>Open this select menu</option>
                         @foreach ($category as $catitem)
-                        <option value="{{ $catitem->id }}">{{ $catitem->name }}</option>
+                        <option value="{{ $catitem->id }}" {{ $product->category_id == $catitem->id ? 'selected' : '' }}  >{{ $catitem->name }}</option>
 
                         @endforeach
 
@@ -70,6 +71,15 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                <br />
+                <div>
+                    <label for="formFileLg" class="form-label">Product Image</label>
+                    @if ($product->image)
+                      <img src="{{ asset('uploads/products/' . $product->image) }}" alt="Product Image" class="img-fluid">
+                    @endif
+                    <input class="form-control form-control-lg" name="image" id="formFileLg" type="file">
+                    <input type="hidden" name="old_image" value="{{ $product->image }}">
+                  </div>
 
                 <br/>
                 <div class="d-flex justify-content-end">

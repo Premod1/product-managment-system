@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -24,12 +25,13 @@ class ProductController extends Controller
     {
         // Validate the incoming data
     $validatedData = $request->validate([
-        'product_code' => 'required|unique:products,code',
+        'product_code' => 'required',
         'product_name' => 'required',
         'product_description' => 'required',
         'product_category' => 'required',
         'display_order_no' => 'required|numeric',
         'product_price' => 'required|numeric',
+        'image' => 'required|image',
     ]);
 
          // Create a new Product instance
@@ -40,6 +42,11 @@ class ProductController extends Controller
          $product->category_id = $validatedData['product_category'];
          $product->display_order_no = $validatedData['display_order_no'];
          $product->price_created_by = $validatedData['product_price'];
+
+         $image = $request->file('image');
+         $filename = time() . '.' . $image->getClientOriginalExtension();
+         $image->move('uploads/products', $filename);
+         $product->image = $filename;
 
          $product->save();
 
@@ -55,8 +62,28 @@ class ProductController extends Controller
     }
     public function update(Request $request, $id)
     {
-        Product::findOrFail($id)->update($request->all());
-        return redirect()->route('product')->with('status', 'Product updated successfully');
+      $product = Product::findOrFail($id);
+      $product->code = $request->input('product_code');
+      $product->name = $request->input('product_name');
+      $product->description = $request->input('product_description');
+      $product->category_id = $request->input('product_category');
+      $product->display_order_no = $request->input('display_order_no');
+      $product->price_created_by = $request->input('product_price');
+
+      if($request->hasFile('image'))
+      {
+        $destination = 'uploads/products/'.$product->image;
+        if(File::exists($destination))
+        {
+            File::delete($destination);
+        }
+        $image = $request->file('image');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $image->move('uploads/products', $filename);
+        $product->image = $filename;
+      }
+      $product->save();
+      return redirect()->route('product')->with('status', 'Product updated successfully');
     }
     public function delete($id)
     {

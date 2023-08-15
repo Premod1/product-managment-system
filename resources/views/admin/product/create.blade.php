@@ -12,7 +12,7 @@
             <h4 class="">Create Product</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('product.store') }}" method="POST">
+            <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-floating">
                     <input class="form-control" name="product_code" id="code" value="{{ old('product_code') }}" type="number" placeholder="Leave a comment here" />
@@ -68,6 +68,11 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                <br />
+                <div>
+                    <label for="formFileLg" class="form-label">Product Image</label>
+                    <input class="form-control form-control-lg" name="image" id="formFileLg" type="file">
+                  </div>
 
                 <br/>
                 <div class="d-flex justify-content-end">

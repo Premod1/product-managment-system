@@ -37,7 +37,7 @@
                     <td>{{ $product->code }}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->description }}</td>
-                    <td>{{ $product->category_id }}</td>
+                    <td>{{ $product->category->name }}</td>
                     <td>{{ $product->display_order_no }}</td>
                     <td>{{ $product->price_created_by }}</td>
                     <td>

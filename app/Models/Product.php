@@ -16,5 +16,11 @@ class Product extends Model
         'category_id',
         'display_order_no',
         'price_created_by',
+        'image'
     ];
+
+    public function category()
+    {
+        return $this->hasOne(Category::class,'id','category_id');
+    }
 }

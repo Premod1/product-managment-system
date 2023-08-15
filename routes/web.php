@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\HomeController;
@@ -31,4 +32,8 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group( function () {
 
     Route::get('/product', [ProductController::class, 'index'])->name('product');
     Route::get('/add-product', [ProductController::class, 'create'])->name('add-product');
+
+    Route::get('/category', [CategoryController::class, 'index'])->name('category');
+    Route::get('/add-category', [CategoryController::class, 'create'])->name('add-category');
+    Route::post('/category/store', [CategoryController::class, 'store'])->name('category.store');
 });

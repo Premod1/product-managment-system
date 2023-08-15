@@ -34,17 +34,17 @@
                     </nav>
                 </div>
 
-                 {{-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProject" aria-expanded="false" aria-controls="collapseLayouts">
+                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProject" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fa fa-briefcase"></i></div>
-                    Project
+                    Category
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseProject" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ url('admin/project') }}">View Project</a>
-                        <a class="nav-link" href="{{ url('admin/add-project') }}">Add Project</a>
+                        <a class="nav-link" href="{{ url('admin/category') }}">View Category</a>
+                        <a class="nav-link" href="{{ url('admin/add-category') }}">Add Category</a>
                     </nav>
-                </div> --}}
+                </div>
 
 
 

@@ -12,9 +12,10 @@
             <h4 class="">Edit Category</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('category.store') }}" method="POST">
+            <form action="{{ route('category.update', ['id' => $category->id]) }}" method="POST">
 
                 @csrf
+
                 <div class="form-floating">
                     <input class="form-control" value="{{ $category->name }}" name="category" id="category" type="text" placeholder="Leave a comment here" />
                     <label for="floatingTextarea">Category</label>

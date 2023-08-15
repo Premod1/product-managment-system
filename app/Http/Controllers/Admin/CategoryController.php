@@ -36,13 +36,14 @@ class CategoryController extends Controller
     }
     public function update(Request $request, $id)
     {
-        Category::findOrFail($id)->update($request->all());
-        return redirect()->route('category')->with('status', 'Category added successfully.');
+        $category = Category::findOrFail($id);
+        $category->update($request->all());
+        return redirect()->route('category')->with('status', 'Category Updated successfully.');
 
     }
     public function delete($id)
     {
         Category::findOrFail($id)->delete();
-        return redirect()->route('category')->with('status', 'Category Updated successfully.');
+        return redirect()->route('category')->with('status', 'Category Deleted successfully.');
     }
 }

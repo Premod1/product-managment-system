@@ -71,8 +71,12 @@
                 <br />
                 <div>
                     <label for="formFileLg" class="form-label">Product Image</label>
-                    <input class="form-control form-control-lg" name="image" id="formFileLg" type="file">
-                  </div>
+                    <input class="form-control form-control-lg @error('image') is-invalid @enderror" name="image" id="formFileLg" type="file">
+                    @error('image')
+                        <div class="invalid-feedback">{{ $message }} <span style="color: red;">Upload file less than 2mb only</span></div>
+
+                    @enderror
+                </div>
 
                 <br/>
                 <div class="d-flex justify-content-end">

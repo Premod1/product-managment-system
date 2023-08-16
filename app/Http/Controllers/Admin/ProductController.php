@@ -23,7 +23,7 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
-        // Validate the incoming data
+       // Validate the incoming data
     $validatedData = $request->validate([
         'product_code' => 'required',
         'product_name' => 'required',
@@ -31,27 +31,32 @@ class ProductController extends Controller
         'product_category' => 'required',
         'display_order_no' => 'required|numeric',
         'product_price' => 'required|numeric',
-        'image' => 'required|image|max:2048',
+        'image' => 'required|image|max:2048', // Max size of 2MB
     ]);
 
-         // Create a new Product instance
-         $product = new Product();
-         $product->code = $validatedData['product_code'];
-         $product->name = $validatedData['product_name'];
-         $product->description = $validatedData['product_description'];
-         $product->category_id = $validatedData['product_category'];
-         $product->display_order_no = $validatedData['display_order_no'];
-         $product->price_created_by = $validatedData['product_price'];
+    // Check image size before proceeding
+    $image = $request->file('image');
+    $imageSize = $image->getSize(); // Size in bytes
+    if ($imageSize > 2 * 1024 * 1024) { // Convert 2MB to bytes
+        return redirect()->back()->withErrors(['image' => 'Image size should be less than 2MB']);
+    }
 
-         $image = $request->file('image');
-         $filename = time() . '.' . $image->getClientOriginalExtension();
-         $image->move('uploads/products', $filename);
-         $product->image = $filename;
+    // Create a new Product instance
+    $product = new Product();
+    $product->code = $validatedData['product_code'];
+    $product->name = $validatedData['product_name'];
+    $product->description = $validatedData['product_description'];
+    $product->category_id = $validatedData['product_category'];
+    $product->display_order_no = $validatedData['display_order_no'];
+    $product->price_created_by = $validatedData['product_price'];
 
-         $product->save();
+    $filename = time() . '.' . $image->getClientOriginalExtension();
+    $image->move('uploads/products', $filename);
+    $product->image = $filename;
 
-         return redirect()->route('product')->with('status', 'Product added successfully');
+    $product->save();
 
+    return redirect()->route('product')->with('status', 'Product added successfully');
     }
     public function edit($id)
     {

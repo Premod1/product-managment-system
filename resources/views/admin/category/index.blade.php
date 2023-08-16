@@ -9,7 +9,7 @@
 
     <div class="card mt-4">
         <div class="card-header">
-            <h4 class="">View Category</h4>
+            <h4 class="">View Category <a href="{{ url('admin/add-category')}}" class="btn btn-primary btn-lg float-end">Add Category</a></h4>
         </div>
         <div class="card-body">
             @if(session('status'))
@@ -17,7 +17,7 @@
                 {{ session('status') }}
             </div>
         @endif
-            <table class="table">
+            <table id="myDataTable" class="table">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">ID</th>

@@ -17,7 +17,7 @@
                 {{ session('status') }}
             </div>
         @endif
-        <table class="table">
+        <table id="myDataTable" class="table">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">ID</th>

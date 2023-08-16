@@ -12,7 +12,7 @@
             <h4 class="">Edit Product</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('product.update',['id' => $product->id]) }}" method="POST" enctype="multipart/form-data">
 
                 @csrf
                 <div class="form-floating">

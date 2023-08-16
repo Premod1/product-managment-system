@@ -31,7 +31,7 @@ class ProductController extends Controller
         'product_category' => 'required',
         'display_order_no' => 'required|numeric',
         'product_price' => 'required|numeric',
-        'image' => 'required|image',
+        'image' => 'required|image|max:2048',
     ]);
 
          // Create a new Product instance

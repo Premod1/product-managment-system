@@ -37,7 +37,8 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::findOrFail($id);
-        $category->update($request->all());
+        $category->name = $request->input('category');
+        $category->save();
         return redirect()->route('category')->with('status', 'Category Updated successfully.');
 
     }

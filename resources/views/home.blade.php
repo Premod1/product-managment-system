@@ -12,7 +12,7 @@
                             <div class="col-md-4">
                                 <div class="row">
                                     <div class="card">
-                                        <img class="card-img-top" src="{{ asset('uploads/products/'.$item->image) }}" alt="Product Image" style="max-width: 100%; max-height: 600px;">
+                                        <img class="card-img-top" src="{{ asset('uploads/products/'.$item->image) }}"  alt="Product Image"  style="width:100%;height: 370px;">
                                         <div class="card-body">
                                             <hr />
                                             <h5>{{ $item->code }}</h5>

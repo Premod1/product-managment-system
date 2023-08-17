@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
+        $product = Product::orderBy('display_order_no')->get();
         return view('home', compact('product'));
     }
     public function logout()

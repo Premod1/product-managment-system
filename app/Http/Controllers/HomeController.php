@@ -23,11 +23,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $product = Product::orderBy('display_order_no')->get();
-        return view('home', compact('product'));
+        $search = $request['search'] ?? "";
+        if ($search != "") {
+            $product = Product::where('name', 'LIKE', "%$search%")->orwhere('code', 'LIKE', "%$search%")->get();
+        } else {
+            $product = Product::orderBy('display_order_no')->get();
+        }
+
+        return view('home', compact('product', 'search'));
     }
+
     public function logout()
     {
         Auth::logout();
